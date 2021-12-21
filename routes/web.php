@@ -18,9 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('about', function () {
-    return view('about');
+Route::get('/home', function () {
+    echo "This is homepage.";
 });
+
+Route::get('/about', function () {
+    return view('about');
+})->middleware('check');
 
 //Route::get('/contact', 'ContactController@index'); //Laravel 7 format
 Route::get('/contact', [ContactController::class, 'index']); //contact je URL parameter a vykona s ContactController-a metodu index()
