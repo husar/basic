@@ -28,3 +28,7 @@ Route::get('/about', function () {
 
 //Route::get('/contact', 'ContactController@index'); //Laravel 7 format
 Route::get('/contact-asdf-asdfsad', [ContactController::class, 'index'])->name('con'); //contact je URL parameter a vykona s ContactController-a metodu index()
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
