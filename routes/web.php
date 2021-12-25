@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +31,6 @@ Route::get('/about', function () {
 Route::get('/contact-asdf-asdfsad', [ContactController::class, 'index'])->name('con'); //contact je URL parameter a vykona s ContactController-a metodu index()
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    $users = User::all();
+    return view('dashboard',compact('users'));
 })->name('dashboard');
