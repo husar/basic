@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CategoryController;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
@@ -30,6 +31,9 @@ Route::get('/about', function () {
 
 //Route::get('/contact', 'ContactController@index'); //Laravel 7 format
 Route::get('/contact-asdf-asdfsad', [ContactController::class, 'index'])->name('con'); //contact je URL parameter a vykona s ContactController-a metodu index()
+
+// Category controller
+Route::get('/category/all', [CategoryController::class, 'AllCat'])->name('all.category');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
    // $users = User::all();
