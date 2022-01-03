@@ -35,6 +35,8 @@ Route::get('/contact-asdf-asdfsad', [ContactController::class, 'index'])->name('
 // Category controller
 Route::get('/category/all', [CategoryController::class, 'AllCat'])->name('all.category');
 
+Route::post('/category/add', [CategoryController::class, 'AddCat'])->name('store.category');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
    // $users = User::all();
     $users = DB::table('users')->get();
