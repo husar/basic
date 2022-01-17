@@ -17,8 +17,9 @@ class CategoryController extends Controller
         //             ->latest()->paginate(5);
 
         $categories = Category::latest()->paginate(5);
+        $trashCat = Category::onlyTrashed()->latest()->paginate(3);
         //$categories = DB::table('categories')->latest()->paginate(5);
-        return view('admin.category.index', compact('categories'));
+        return view('admin.category.index', compact('categories','trashCat'));
     }
 
     public function AddCat(Request $request){
@@ -52,21 +53,26 @@ class CategoryController extends Controller
     }
 
     public function Edit($id){
-        // $categories = Category::find($id);
-        $categories = DB::table('categories')->where('id',$id)->first();
+        $categories = Category::find($id);
+        // $categories = DB::table('categories')->where('id',$id)->first();
         return view('admin.category.edit', compact('categories'));
     }
 
     public function Update(Request $request ,$id){
-        // $update = Category::find($id)->update([
-        //     'category_name' => $request->category_name,
-        //     'user_id' => Auth::user()->id
-        // ]);
-        $data = array();
-        $data['category_name']  = $request->category_name;
-        $data['user_id']        = Auth::user()->id;
-        DB::table('categories')->where('id',$id)->update($data);
+        $update = Category::find($id)->update([
+            'category_name' => $request->category_name,
+            'user_id' => Auth::user()->id
+        ]);
+        // $data = array();
+        // $data['category_name']  = $request->category_name;
+        // $data['user_id']        = Auth::user()->id;
+        // DB::table('categories')->where('id',$id)->update($data);
         return Redirect()->route('all.category')->with('success', 'Category updated successfully.');
+    }
+
+    public function SoftDelete($id){
+        $delete = Category::find($id)->delete();
+        return Redirect()->back()->with('success','Category Soft Delete successfully');
     }
 
 }
