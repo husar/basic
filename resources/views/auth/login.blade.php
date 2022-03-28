@@ -49,7 +49,7 @@
           <div class="card">
             <div class="card-header bg-primary">
               <div class="app-brand">
-                <a href="/index.html">
+                <a href="{{ url('../') }}">
                   <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="30" height="33"
                     viewBox="0 0 30 33">
                     <g fill="none" fill-rule="evenodd">
@@ -77,7 +77,7 @@
                     <div class="d-flex my-2 justify-content-between">
                       <div class="d-inline-block mr-3">
                         <label class="control control-checkbox">Remember me
-                          <input type="checkbox" />
+                          <x-jet-checkbox id="remember_me" name="remember" />
                           <div class="control-indicator"></div>
                         </label>
                 
