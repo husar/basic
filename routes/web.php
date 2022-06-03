@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
@@ -24,7 +25,8 @@ Route::get('/email/verify', function () {
 
 Route::get('/', function () {
     $brands = DB::table('brands')->get();
-    return view('home', compact('brands'));
+    $abouts = DB::table('home_abouts')->first();
+    return view('home', compact('brands','abouts'));
 });
 
 Route::get('/home', function () {
@@ -78,6 +80,20 @@ Route::get('/home/slider', [HomeController::class, 'HomeSlider'])->name('home.sl
 Route::get('/add/slider', [HomeController::class, 'AddSlider'])->name('add.slider');
 
 Route::post('/store/slider', [HomeController::class, 'StoreSlider'])->name('store.slider');
+
+//Home About All Route
+
+Route::get('/home/About', [AboutController::class, 'HomeAbout'])->name('home.about');
+
+Route::get('/add/About', [AboutController::class, 'AddAbout'])->name('add.about');
+
+Route::post('/store/About', [AboutController::class, 'StoreAbout'])->name('store.about');
+
+Route::get('/about/edit/{id}', [AboutController::class, 'EditAbout']);
+
+Route::post('/update/homeabout/{id}', [AboutController::class, 'UpdateAbout']);
+
+Route::get('/about/delete/{id}', [AboutController::class, 'DeleteAbout']);
 
 // For User
 
