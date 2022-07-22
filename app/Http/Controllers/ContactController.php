@@ -11,6 +11,14 @@ use Illuminate\Support\Facades\DB;
 
 class ContactController extends Controller
 {
+
+    public function AdminMessage(){
+
+        $messages = ContactForm::all();
+
+        return view('admin.contact.message', compact('messages'));
+
+    }
     
     public function ContactForm(Request $request){
 

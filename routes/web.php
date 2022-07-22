@@ -109,6 +109,8 @@ Route::get('/admin/add/contact', [ContactController::class, 'AdminAddContact'])-
 
 Route::post('admin/store/contact', [ContactController::class, 'AdminStoreContact'])->name('store.contact');
 
+Route::get('/admin/message', [ContactController::class, 'AdminMessage'])->name('admin.message');
+
 //  Home contact page route
 
 Route::get('/contact', [ContactController::class, 'Contact'])->name('contact');
