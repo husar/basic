@@ -113,6 +113,8 @@ Route::post('admin/store/contact', [ContactController::class, 'AdminStoreContact
 
 Route::get('/contact', [ContactController::class, 'Contact'])->name('contact');
 
+Route::post('/contact/form', [ContactController::class, 'ContactForm'])->name('contact.form');
+
 // For User
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
