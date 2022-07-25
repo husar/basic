@@ -13,4 +13,11 @@ class ChangePass extends Controller
 
     }
 
+
+    public function UpdatePassword(){
+
+        
+
+    }
+
 }
